@@ -40,13 +40,10 @@ app.get('/timeline', (req, res) => {
 app.post('/writePost', (req, res) => {
   console.log('post request');
   console.log(req.body);
-  /*
-  client.zadd("section1", 0, -1, 'WITHSCORES', function (err, obj) {
+  client.zadd("section1", 0, req.body.msg, function (err, obj) {
       if (err) throw(err);
-      console.dir(obj);
-      res.send(obj);
+      res.send('succ');
   });
-  */
 });
 
 app.listen(PORT, () => {
