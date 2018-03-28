@@ -58,7 +58,7 @@ export default {
     return {
       msg		: 'Welcome to Q&A',
       postMsg	: '',
-      history	: ['wait...']
+      history	: [ ]
     }
   },
   mounted()
@@ -101,7 +101,6 @@ export default {
         }
       })
       .catch(function (error) {
-        alert(error);
         console.log(error);
       });
     }
