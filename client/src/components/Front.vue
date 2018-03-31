@@ -25,10 +25,11 @@
   </b-form-textarea><br>
   -->
   <b-button variant="success" @click="submit()">ASK</b-button>
+  <!--
   <div style="font-size:3em; color:Tomato">
-    <i class="fas fa-camera-retro"></i>
+  <i class="far fa-thumbs-up"></i>
 	</div>
-
+	-->
 
 
 </b-card>
@@ -46,7 +47,7 @@
       </b-row>
       <hr>
       <b-row>
-        <b-button variant="primary" style="margin-left: 10px" @click="upvote(key)">{{ history[key] }} upvote</b-button>
+        <b-button style="margin-left: 10px" @click="upvote(key)">{{ history[key] }} upvote</b-button>
       </b-row>
     </div>
   </div>
