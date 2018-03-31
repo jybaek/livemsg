@@ -25,6 +25,12 @@
   </b-form-textarea><br>
   -->
   <b-button variant="success" @click="submit()">ASK</b-button>
+  <div style="font-size:3em; color:Tomato">
+    <i class="fas fa-camera-retro"></i>
+	</div>
+
+
+
 </b-card>
 
 <hr>
@@ -36,12 +42,11 @@
   <div class="card">
     <div class="container">
       <b-row>
-        <b-col style="flex: 0 0 90%;max-width: 90%;">{{ key }}</b-col>
+        <b-col style="flex: 0 0 90%;max-width: 90%; color: rgba(0,0,0,.4);">{{ key }}</b-col>
       </b-row>
       <hr>
       <b-row>
-        <b-col style="flex: 0 0 80%;max-width: 80%;">{{ history[key] }}</b-col>
-        <b-button @click="upvote(key)">upvote</b-button>
+        <b-button variant="primary" style="margin-left: 10px" @click="upvote(key)">{{ history[key] }} upvote</b-button>
       </b-row>
     </div>
   </div>
@@ -129,6 +134,7 @@ export default {
 <style scoped>
 h1, h2 {
   font-weight: normal;
+  color: rgba(0,0,0,.4);
 }
 ul {
   list-style-type: none;
@@ -160,6 +166,6 @@ img {
 }
 
 .container {
-  padding: 20px 16px;
+	padding: 16px 20px;
 }
 </style>

@@ -15,22 +15,12 @@ client.on("error", function (err) {
     console.log("Error " + err);
 });
 
-// 추가
-// ZADD section1 0 testaaa
-
-// 조회
-// ZRANGE section1 0 -1 withscores
-
-// 좋아요
-// ZINCRBY section1 1 testaa
-
-
 // CORS 설정
 app.use(cors());
 
 app.get('/timeline', (req, res) => {
   console.log('get request');
-  client.zrange("section1", 0, -1, 'WITHSCORES', function (err, obj) {
+  client.zrevrange("section1", 0, -1, 'WITHSCORES', function (err, obj) {
       if (err) throw(err);
       console.dir(obj);
       res.send(obj);
