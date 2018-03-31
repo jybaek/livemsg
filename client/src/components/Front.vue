@@ -3,9 +3,13 @@
     <h1>{{ msg }}</h1>
 
     <b-container fluid>
-      <!--
-      <b-form-textarea id="textarea" style="width:400px; margin-left: auto; margin-right: auto;"
-    -->
+      <b-form-textarea id="textarea" style="width:60%; margin-left: auto; margin-right: auto;"
+		v-model="postMsg"
+		placeholder="Type your question"
+		:rows="4"
+		:max-rows="4">
+	  </b-form-textarea><br>
+	<!--
     <b-card title="Ask the speaker"
     img-src="https://placekitten.com/1000/300"
     img-alt="Image"
@@ -19,6 +23,7 @@
     :rows="4"
     :max-rows="4">
   </b-form-textarea><br>
+  -->
   <b-button variant="success" @click="submit()">ASK</b-button>
 </b-card>
 
@@ -139,7 +144,7 @@ a {
 .card {
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
   transition: 0.3s;
-  width: 40%;
+  width: 60%;
   border-radius: 5px;
   margin-left: auto;
   margin-right: auto;
