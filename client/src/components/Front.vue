@@ -36,7 +36,7 @@
       <hr>
       <b-row>
         <b-col style="flex: 0 0 80%;max-width: 80%;">{{ history[key] }}</b-col>
-        <b-button>upvote</b-button>
+        <b-button @click="upvote(key)">upvote</b-button>
       </b-row>
     </div>
   </div>
@@ -68,6 +68,18 @@ export default {
   },
   methods:
   {
+	upvote(post)
+	{
+      axios.post('http://localhost:7005/upvote', {
+        key : post,
+      })
+      .then(response => {
+        this.getTimeline();
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+	},
     todo()
     {
       setInterval(() => {

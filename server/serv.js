@@ -37,6 +37,15 @@ app.get('/timeline', (req, res) => {
   });
 });
 
+app.post('/upvote', (req, res) => {
+  console.log('upvote request');
+  console.log(req.body);
+  client.zincrby("section1", 1, req.body.key, function (err, obj) {
+      if (err) throw(err);
+      res.send('succ');
+  });
+});
+
 app.post('/writePost', (req, res) => {
   console.log('post request');
   console.log(req.body);
