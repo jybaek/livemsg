@@ -28,8 +28,10 @@
         </b-card>
 
         <hr>
+		<b-row style="width:46%; margin-left: auto;">
         <h2>{{ history.length }} question</h2>
-        <br>
+		<b-form-select style="width:170px" v-model="selected" :options="options" @change="sortFunc" class="mb-3"/>
+		</b-row>
         <div v-for="key in history">
             <div class="card">
                 <div class="container">
@@ -59,7 +61,9 @@ export default {
         return {
             msg		: 'Welcome to Q&A',
             postMsg	: '',
-            history	: [ ]
+            history	: [ ],
+			selected: 'Popular questions',
+			options: [ 'Popular questions', 'Recent questions' ]
         }
     },
     mounted()
@@ -69,6 +73,36 @@ export default {
     },
     methods:
     {
+		sortFunc()
+		{
+			this.$nextTick(function() 
+			{
+				if ( this.selected == "Recent questions" )
+				{
+					this.history.sort(function (a, b) {
+						if (a.timestamp > b.timestamp) {
+							return -1;
+						}
+						if (a.timestamp < b.timestamp) {
+							return 1;
+						}
+						return 0;
+					});
+				}
+				else if ( this.selected == "Popular questions" )
+				{
+					this.history.sort(function (a, b) {
+						if (a.score > b.score) {
+							return -1;
+						}
+						if (a.score < b.score) {
+							return 1;
+						}
+						return 0;
+					});
+				}
+			});
+		},
         upvote(post)
         {
             var msg = JSON.stringify({'timestamp': post.timestamp, 'msg': post.postMsg});
@@ -117,6 +151,7 @@ export default {
                     this.history[j]['postMsg'] = JSON.parse(response.data[i]).msg;
                     this.history[j]['score'] = response.data[i+1];
                 }
+				this.sortFunc();
             })
             .catch(function (error) {
                 console.log(error);
