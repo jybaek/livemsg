@@ -34,14 +34,14 @@
             <div class="card">
                 <div class="container">
                     <b-row>
-                        <b-col style="flex: 0 0 90%;max-width: 90%; color: rgba(0,0,0,.4);">{{ key.timestamp }}</b-col>
+                        <b-col style="flex: 0 0 90%;max-width: 90%; color: rgba(0,0,0,.4);">{{ key.timestamp| moment("MMMM DD, YYYY") }}</b-col>
                     </b-row>
                     <b-row>
                         <b-col style="flex: 0 0 90%;max-width: 90%; color: rgba(0,0,0,.4);">{{ key.postMsg }}</b-col>
                     </b-row>
                     <hr>
                     <b-row>
-                        <b-button style="margin-left: 10px" @click="upvote(key)">{{ key.score }} upvote</b-button>
+                        <b-button size="sm" style="margin-left: 10px" @click="upvote(key)">{{ key.score }} upvote</b-button>
                     </b-row>
                 </div>
             </div>
