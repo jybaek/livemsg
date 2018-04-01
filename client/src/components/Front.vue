@@ -28,9 +28,9 @@
         </b-card>
 
         <hr>
-		<b-row style="width:46%; margin-left: auto;">
-        <h2>{{ history.length }} question</h2>
-		<b-form-select style="width:170px" v-model="selected" :options="options" @change="sortFunc" class="mb-3"/>
+		<b-row>
+        <div class="div_2" style="text-align: left">{{ history.length }} question</div>
+		<div class="div_2" style="text-align: right"><b-form-select style="width:170px" v-model="selected" :options="options" @change="sortFunc" class="mb-3"/></div>
 		</b-row>
         <div v-for="key in history">
             <div class="card">
@@ -198,5 +198,13 @@ img {
 
 .container {
     padding: 16px 20px;
+}
+
+.div_2 {
+    transition: 0.3s;
+    border-radius: 5px;
+    margin-left: auto;
+    margin-right: auto;
+	color: rgba(0,0,0,.4);
 }
 </style>
