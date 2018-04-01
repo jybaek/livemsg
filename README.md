@@ -1,6 +1,11 @@
 # livemsg
 세미나 장소에서 발표자에게 실시간으로 질문을 할 수 있습니다.
 
+
+![npm](https://img.shields.io/npm/v/npm.svg?registry_uri=https%3A%2F%2Fregistry.npmjs.com)
+[![node version](https://badge.fury.io/js/node.svg)](https://badge.fury.io/js/node)
+
+
 ## Installation
 우선 client, server 디렉터리에서 각각 모듈을 설치해야 합니다.
 ```bash
