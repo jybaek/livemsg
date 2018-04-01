@@ -92,7 +92,7 @@ export default {
         },
         submit()
         {
-            let timestamp = new Date();
+            let timestamp = Date();
             axios.post('http://localhost:7005/writePost', {
                 timestamp : timestamp,
                 msg : this.postMsg
