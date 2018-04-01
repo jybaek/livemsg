@@ -5,7 +5,16 @@
 `Vue-cli` 웹 클라이언트와 `RestAPI` 서버를 실행해야 합니다. 데이터는 `Redis` 에 저장됩니다.
 모두 동일한 서버에서 실행된다는 전제가 있습니다. (서버 IP 가 `localhost` 로 고정되어 있습니다)
 
-우선 Vue 를 실행시킵니다. (아직 개발버전 밖에 없음)
+우선 client, server 디렉터리에서 각각 모듈을 설치해야 합니다.
+```bash
+$ cd livemsg/client
+$ npm install
+$ cd -
+$ cd livemsg/server
+$ npm install
+```
+
+Vue 를 실행시킵니다. (아직 개발버전 밖에 없음)
 ```bash
 $ cd livemsg/client
 $ npm run dev
