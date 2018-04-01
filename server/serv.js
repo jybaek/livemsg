@@ -19,10 +19,9 @@ client.on("error", function (err) {
 app.use(cors());
 
 app.get('/timeline', (req, res) => {
-  console.log('get request');
+  //console.log('get request');
   client.zrevrange("section1", 0, -1, 'WITHSCORES', function (err, obj) {
       if (err) throw(err);
-      console.dir(obj);
       res.send(obj);
   });
 });
@@ -39,7 +38,7 @@ app.post('/upvote', (req, res) => {
 app.post('/writePost', (req, res) => {
   console.log('post request');
   console.log(req.body);
-  client.zadd("section1", 0, req.body.msg, function (err, obj) {
+  client.zadd("section1", 0, JSON.stringify(req.body), function (err, obj) {
       if (err) throw(err);
       res.send('succ');
   });

@@ -1,172 +1,169 @@
 <template>
-  <div class="hello">
-    <h1>{{ msg }}</h1>
+    <div class="hello">
+        <h1>{{ msg }}</h1>
 
-    <b-container fluid>
-      <b-form-textarea id="textarea" style="width:60%; margin-left: auto; margin-right: auto;"
-		v-model="postMsg"
-		placeholder="Type your question"
-		:rows="4"
-		:max-rows="4">
-	  </b-form-textarea><br>
-	<!--
-    <b-card title="Ask the speaker"
-    img-src="https://placekitten.com/1000/300"
-    img-alt="Image"
-    img-top
-    tag="article"
-    style="max-width: 40rem;"
-    class="mb-2">
-    <b-form-textarea no-resize id="textarea" style="width:30rem; margin-left: auto; margin-right: auto;"
-    v-model="postMsg"
-    placeholder="Type your question"
-    :rows="4"
-    :max-rows="4">
-  </b-form-textarea><br>
-  -->
-  <b-button variant="success" @click="submit()">ASK</b-button>
-  <!--
-  <div style="font-size:3em; color:Tomato">
-  <i class="far fa-thumbs-up"></i>
-	</div>
-	-->
+        <b-container fluid>
+            <b-form-textarea id="textarea" style="width:60%; margin-left: auto; margin-right: auto;"
+            v-model="postMsg"
+            placeholder="Type your question"
+            :rows="4"
+            :max-rows="4">
+        </b-form-textarea><br>
+        <!--
+        <b-card title="Ask the speaker"
+        img-src="https://placekitten.com/1000/300"
+        img-alt="Image"
+        img-top
+        tag="article"
+        style="max-width: 40rem;"
+        class="mb-2">
+        <b-form-textarea no-resize id="textarea" style="width:30rem; margin-left: auto; margin-right: auto;"
+        v-model="postMsg"
+        placeholder="Type your question"
+        :rows="4"
+        :max-rows="4">
+    </b-form-textarea><br>
+-->
+        <b-button variant="success" @click="submit()">ASK</b-button>
+        </b-card>
 
-
-</b-card>
-
-<hr>
-
-<h2>{{ Object.keys(history).length }} question</h2>
-<br>
-
-<div v-for="key in Object.keys(history)">
-  <div class="card">
-    <div class="container">
-      <b-row>
-        <b-col style="flex: 0 0 90%;max-width: 90%; color: rgba(0,0,0,.4);">{{ key }}</b-col>
-      </b-row>
-      <hr>
-      <b-row>
-        <b-button style="margin-left: 10px" @click="upvote(key)">{{ history[key] }} upvote</b-button>
-      </b-row>
+        <hr>
+        <h2>{{ history.length }} question</h2>
+        <br>
+        <div v-for="key in history">
+            <div class="card">
+                <div class="container">
+                    <b-row>
+                        <b-col style="flex: 0 0 90%;max-width: 90%; color: rgba(0,0,0,.4);">{{ key.timestamp }}</b-col>
+                    </b-row>
+                    <b-row>
+                        <b-col style="flex: 0 0 90%;max-width: 90%; color: rgba(0,0,0,.4);">{{ key.postMsg }}</b-col>
+                    </b-row>
+                    <hr>
+                    <b-row>
+                        <b-button style="margin-left: 10px" @click="upvote(key)">{{ key.score }} upvote</b-button>
+                    </b-row>
+                </div>
+            </div>
+            <br>
+        </div>
+        </b-container>
     </div>
-  </div>
-  <br>
-</div>
-
-</b-container>
-
-</div>
 </template>
 
 <script>
 import axios from 'axios';
 
 export default {
-  name: 'HelloWorld',
-  data ()
-  {
-    return {
-      msg		: 'Welcome to Q&A',
-      postMsg	: '',
-      history	: [ ]
-    }
-  },
-  mounted()
-  {
-    this.getTimeline();
-    this.todo();
-  },
-  methods:
-  {
-	upvote(post)
-	{
-      axios.post('http://localhost:7005/upvote', {
-        key : post,
-      })
-      .then(response => {
-        this.getTimeline();
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-	},
-    todo()
+    name: 'HelloWorld',
+    data ()
     {
-      setInterval(() => {
-        this.getTimeline();
-      }, 3000);
-    },
-    submit()
-    {
-      let timestamp = new Date();
-      axios.post('http://localhost:7005/writePost', {
-        key : timestamp,
-        msg : this.postMsg
-      })
-      .then(response => {
-        console.log(response);
-        this.postMsg = '';
-        this.getTimeline();
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-    },
-    getTimeline()
-    {
-      axios.get('http://localhost:7005/timeline')
-      .then(response => {
-        this.history = [];
-        for (var i = 0; i < response.data.length; i+=2)
-        {
-          this.history[response.data[i]] = response.data[i+1];
+        return {
+            msg		: 'Welcome to Q&A',
+            postMsg	: '',
+            history	: [ ]
         }
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
+    },
+    mounted()
+    {
+        this.getTimeline();
+        this.todo();
+    },
+    methods:
+    {
+        upvote(post)
+        {
+            var msg = JSON.stringify({'timestamp': post.timestamp, 'msg': post.postMsg});
+            axios.post('http://localhost:7005/upvote', {
+                key : msg
+            })
+            .then(response => {
+                this.getTimeline();
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+        },
+        todo()
+        {
+            setInterval(() => {
+                this.getTimeline();
+            }, 3000);
+        },
+        submit()
+        {
+            let timestamp = new Date();
+            axios.post('http://localhost:7005/writePost', {
+                timestamp : timestamp,
+                msg : this.postMsg
+            })
+            .then(response => {
+                console.log(response);
+                this.postMsg = '';
+                this.getTimeline();
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+        },
+        getTimeline()
+        {
+            axios.get('http://localhost:7005/timeline')
+            .then(response => {
+                this.history = [];
+                for (var i = 0, j = 0; i < response.data.length; i+=2, j++)
+                {
+                    this.history[j] = [];
+                    //this.history[response.data[i]] = response.data[i+1];
+                    this.history[j]['timestamp'] = JSON.parse(response.data[i]).timestamp;
+                    this.history[j]['postMsg'] = JSON.parse(response.data[i]).msg;
+                    this.history[j]['score'] = response.data[i+1];
+                }
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+        }
     }
-  }
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 h1, h2 {
-  font-weight: normal;
-  color: rgba(0,0,0,.4);
+    font-weight: normal;
+    color: rgba(0,0,0,.4);
 }
 ul {
-  list-style-type: none;
-  padding: 0;
+    list-style-type: none;
+    padding: 0;
 }
 li {
-  display: inline-block;
-  margin: 0 10px;
+    display: inline-block;
+    margin: 0 10px;
 }
 a {
-  color: #42b983;
+    color: #42b983;
 }
 .card {
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-  transition: 0.3s;
-  width: 60%;
-  border-radius: 5px;
-  margin-left: auto;
-  margin-right: auto;
-  text-align: left;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    width: 60%;
+    border-radius: 5px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
 }
 
 .card:hover {
-  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 }
 
 img {
-  border-radius: 5px 5px 0 0;
+    border-radius: 5px 5px 0 0;
 }
 
 .container {
-	padding: 16px 20px;
+    padding: 16px 20px;
 }
 </style>
