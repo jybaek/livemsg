@@ -1,3 +1,6 @@
+이 코드는 다른 [리포지토리](https://github.com/withinnovation/livemsg)에서 계속 진행하기로 결정되었습니다.
+모든 문의는 caley.baek@gmail.com 으로 연락 주십시오.
+
 # livemsg
 세미나 장소에서 발표자에게 실시간으로 질문을 할 수 있습니다.
 
