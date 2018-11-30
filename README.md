@@ -1,41 +1,48 @@
-이 코드는 다른 [리포지토리](https://github.com/withinnovation/livemsg)에서 계속 진행하기로 결정되었습니다.
-모든 문의는 caley.baek@gmail.com 으로 연락 주십시오.
-
 # livemsg
-세미나 장소에서 발표자에게 실시간으로 질문을 할 수 있습니다.
+> 세미나 장소에서 발표자에게 실시간으로 질문을 할 수 있는 오픈 소스 플랫폼입니다.
 
+<p align="center">
+<a target="_blank" href="https://www.npmjs.com/package/node"><img src="https://img.shields.io/npm/v/npm.svg?registry_uri=https%3A%2F%2Fregistry.npmjs.com" alt="Version"></a>
+<a target="_blank" href="#none"><img src="https://badge.fury.io/js/node.svg"/></a>
+<a target="_blank" href="https://www.npmjs.com/package/vue"><img src="https://img.shields.io/npm/l/vue.svg" alt="License"></a>
+<a target="_blank" href="https://vuejs.org"><img alt="" src="https://img.shields.io/badge/vue.js-2.x-green.svg"></a>
+</p>
 
-![npm](https://img.shields.io/npm/v/npm.svg?registry_uri=https%3A%2F%2Fregistry.npmjs.com)
-[![node version](https://badge.fury.io/js/node.svg)](https://badge.fury.io/js/node)
+## Requirement
+* forever
+* nodemon
+
+## Feature
+* Express Server@4.16.2
+* VueJS@2.5.2
+* webpack-dev-middleware@2.0.6
+* webpack-dev-server@2.9.1
 
 
 ## Installation
-우선 client, server 디렉터리에서 각각 모듈을 설치해야 합니다.
 ```bash
-$ cd livemsg/client
-$ npm install
-$ cd -
-$ cd livemsg/server
-$ npm install
+# install dependencies
+npm install
+
+# express serve with hot reload at localhost:8080
+npm run start:dev
+
+# build for production and view the bundle analyzer report
+npm run build --report
+
+# run unit tests
+npm run unit
+
+# run e2e tests
+npm run e2e
+
+# run all tests
+npm test
 ```
 
 ## Usage
-`Vue-cli` 웹 클라이언트와 `RestAPI` 서버를 실행해야 합니다. 데이터는 `Redis` 에 저장됩니다.
-모두 동일한 서버에서 실행된다는 전제가 있습니다. (서버 IP 가 `localhost` 로 고정되어 있습니다)
 
-Vue 를 실행시킵니다. (아직 개발버전 밖에 없음)
-```bash
-$ cd livemsg/client
-$ npm run dev
-```
-
-RestAPI 서버를 실행합니다.
-```bash
-$ cd livemsg/server
-$ node serv.js
-```
-
-이제 `localhost:8080` 으로 접속해서 사용하시면 됩니다!
+`Vue-cli` 웹 클라이언트 서버를 실행해야 합니다. 데이터는 `Firebase` 에 저장됩니다.
 
 ## Contribute
 아직 기능이 많이 미흡하고 수정되어야 하는 부분이 많이 있습니다. 
@@ -43,3 +50,7 @@ $ node serv.js
 
 ## License
 [MIT](LICENSE)
+
+
+
+

@@ -1,0 +1,33 @@
+
+@keyframes cardIn {
+    from {
+      opacity: 0;
+      transform: translateY(20%);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  @keyframes toggleInput {
+    from {
+      opacity: 0;
+      transform: translateY(20%);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  .cardIn-enter-active {
+    animation: cardIn 0.8s ease;
+  }
+  .cardIn-leave-active {
+    animation: cardIn 0.8s reverse;
+  }
+  .toggle-input-enter-active {
+    animation: toggleInput 0.3s;
+  }
+  .toggle-input-leave-active {
+    animation: toggleInput 0.3s reverse;
+  }

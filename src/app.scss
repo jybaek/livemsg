@@ -1,0 +1,34 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:100');
+@import './style/animation.scss';
+
+  #app {
+    font-family: 'Apple SD Gothic', Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  h1, h2, h3, ul, li, div, span, p, body {
+      margin: 0;
+      padding: 0;
+  }
+  ul {
+      list-style-type: none;
+      padding: 0;
+  }
+  :focus {
+    outline: none;
+  }
+  ::placeholder {
+    color: #bbb;
+  }
+  button {
+    border:none;
+    background-color: transparent;
+    -webkit-appearance:none;
+    cursor: pointer;
+  }
+  select {
+    -webkit-appearance:none;
+  }
+  div {
+    box-sizing: border-box;
+  }
