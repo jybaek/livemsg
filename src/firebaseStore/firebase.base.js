@@ -1,12 +1,10 @@
-import firebase from 'firebase-admin';
+const admin = require("firebase-admin");
 
-const firebaseConfig = {
-  apiKey: "AIzaSyC7lQ1YGJ5VY94_Qnkm2STbsfuJGWMmPJo",
-  authDomain: "hanvi-f599c.firebaseapp.com",
-  databaseURL: "https://hanvi-f599c.firebaseio.com",
-  projectId: "hanvi-f599c",
-  storageBucket: "",
-  messagingSenderId: "859000050381"
-};
+var serviceAccount = require("../../livemsgkey.json");
 
-export const firebaseBase = firebase.initializeApp(firebaseConfig);
+admin.initializeApp({
+  credential: admin.credential.cert(serviceAccount),
+  databaseURL: "https://hanvi-223711.firebaseio.com"
+});
+
+export const firebaseBase = admin

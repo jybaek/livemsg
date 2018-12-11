@@ -58,12 +58,13 @@
 
 <script>
   import db from '../firebaseStore/firebase.store';
+  db.settings({ timestampsInSnapshots: true });
   import Card from './Card';
   import moment from 'moment';
   import Gnb from './Gnb';
 
   export default {
-    name: 'HelloWorld',
+    name: 'Main',
     data() {
       return {
         msg: 'LIVE Q&A',
@@ -180,7 +181,7 @@
           })
           this.sortFunc(this.selected);
         }, (error) => {
-          console.log('Error getting documents', err);
+          console.log('Error getting documents', error);
         });
       }
     },
