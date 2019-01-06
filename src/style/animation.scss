@@ -19,6 +19,16 @@
       transform: translateY(0);
     }
   }
+  @keyframes gnaAnimation {
+    from {
+      opacity: 0;
+      transform: translateY(-20%);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
   .cardIn-enter-active {
     animation: cardIn 0.8s ease;
   }
@@ -30,4 +40,10 @@
   }
   .toggle-input-leave-active {
     animation: toggleInput 0.3s reverse;
+  }
+  .gnb-animation-enter-active {
+    animation: gnaAnimation 0.3s;
+  }
+  .gnb-animation-leave-active {
+    animation: gnaAnimation 0.3s reverse;
   }

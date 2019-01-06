@@ -1,8 +1,8 @@
 export default {
-		apiKey: "AIzaSyC7zsEP4XCMP_-HcpqPxG_L_Rv0JDtH1KY",
-		authDomain: "livemsg-de622.firebaseapp.com",
-		databaseURL: "https://livemsg-de622.firebaseio.com",
-		projectId: "livemsg-de622",
-		storageBucket: "livemsg-de622.appspot.com",
-		messagingSenderId: "611585985356"
+    apiKey: "...",
+    authDomain: "hanvi-f599c.firebaseapp.com",
+    databaseURL: "https://hanvi-f599c.firebaseio.com",
+    projectId: "hanvi-f599c",
+    storageBucket: "hanvi-f599c.appspot.com",
+    messagingSenderId: "..."
 }

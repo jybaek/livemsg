@@ -1,10 +1,4 @@
-const admin = require("firebase-admin");
+import firebase from 'firebase';
+import firebaseConfig from '../config/firebaseConfig';
 
-var serviceAccount = require("../../livemsgkey.json");
-
-admin.initializeApp({
-  credential: admin.credential.cert(serviceAccount),
-  databaseURL: "https://hanvi-223711.firebaseio.com"
-});
-
-export const firebaseBase = admin
+export const firebaseBase = firebase.initializeApp(firebaseConfig);
