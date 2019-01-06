@@ -6,7 +6,7 @@
           No. {{ item.postNum }}
         </div>
         <div class="card-date">
-          {{ item.timestamp| moment("MMMM DD, YYYY HH:mm:ss") }}
+          {{ item.timestamp| moment("YYYY MM DD, HH:mm:ss") }}
         </div>
       </div>
       <p class="card-content" :class="{'large-text' : isShort}">{{ item.postMsg }}</p>

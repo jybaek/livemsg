@@ -170,7 +170,7 @@
           snapshot.forEach((doc) => {
             this.history.push({
                 'id'		: doc.id,
-                'timestamp'	: moment(doc.data().timestamp).calendar(),
+                'timestamp'	: doc.data().timestamp.seconds,
                 'postMsg'	: doc.data().msg,
                 'postNum'	: doc.data().postNum,
                 'score'		: doc.data().score,
