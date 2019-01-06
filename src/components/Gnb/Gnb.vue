@@ -34,21 +34,21 @@ export default {
     },
     computed: {
         user() {
-            return this.$store.state.userInfo
+            // return this.$store.state.userInfo
         },
         loginState() {
-            return this.$store.auth.state
+            // return this.$store.auth.state
         }
     },
     beforeCreate() {
-        this.$store.authStore.dispatch('checkLogin')
+        // this.$store.authStore.dispatch('checkLogin')
     },
     methods: {
         UserInfoModalToggle() {
             this.UserInfoModalState = !this.UserInfoModalState
         },
         signIn() {
-            this.$store.authStore.dispatch('login')
+            // this.$store.authStore.dispatch('login')
         },
     },
     components: {
