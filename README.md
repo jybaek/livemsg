@@ -43,8 +43,14 @@ npm test
 ## Usage
 You need to run the `Vue-cli` web client server. The data is stored in `Firebase`.
 
+## Screenshot
+<img src="/demo.png" style="max-width:100%;max-height:100%;">
+
 ## Contribute
 Any form of contribution is welcome.
+
+## Acknowledgements
+
 
 ## License
 [MIT](LICENSE)
