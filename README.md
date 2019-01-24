@@ -50,7 +50,7 @@ You need to run the `Vue-cli` web client server. The data is stored in `Firebase
 Any form of contribution is welcome.
 
 ## Acknowledgements
-
+Thanks to @MartinYounghoonKim and @MopsyShin for their contributions!
 
 ## License
 [MIT](LICENSE)
